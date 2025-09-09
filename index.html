@@ -3,265 +3,131 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Happy 4 Months, My Love 💖</title>
-  <meta name="description" content="A tiny interactive love‑letter website with cute easter eggs, a photo wall, and confetti hearts." />
+  <title>Happy 4 Months, Sophia! 💖</title>
+  <meta name="description" content="An interactive love letter with a playful entry quiz, floating hearts surprise, and spammable compliments." />
   <meta name="theme-color" content="#ff6b9e" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --pink:#ff6b9e; /* main */
-      --peach:#ffb199; /* accent */
-      --soft:#ffe7ef; /* bg tint */
-      --ink:#342e37;  /* text */
-      --card:#ffffffcc; /* glass card */
-      --shadow: 0 20px 45px rgba(0,0,0,.12);
-      --radius: 22px;
+      --pink:#ff6b9e; --peach:#ffb199; --soft:#ffe7ef; --ink:#342e37; --card:#ffffffcc; --shadow:0 20px 45px rgba(0,0,0,.12); --radius:22px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;}
-    body{
-      margin:0; 
-      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
-      color:var(--ink);
+    html,body{height:100%}
+    body{margin:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--ink);
       background: radial-gradient(1200px 800px at 15% -10%, #ffd1dc 0%, transparent 50%),
                   radial-gradient(1000px 700px at 100% 0%, #ffd9cc 0%, transparent 55%),
                   linear-gradient(180deg, #fff 0%, #ffeef5 100%);
       overflow-x:hidden;
     }
-    .wrap{max-width:1000px;margin:0 auto;padding:28px}
-
-    header.hero{
-      display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;
-      text-align:center; padding:36px 18px 18px;
-    }
-    .badge{display:inline-flex;gap:8px;align-items:center;background:var(--soft);border:1px dashed var(--peach);color:#b64d6f;padding:8px 14px;border-radius:999px;font-weight:600;font-size:.95rem}
-    .title{font-family:Caveat,system-ui; font-size:clamp(2rem, 5.8vw, 4rem); line-height:1.1; margin:6px 0;color:#db2672; letter-spacing:.5px}
-    .subtitle{opacity:.8}
-
-    .card{
-      background:var(--card); backdrop-filter: blur(10px);
-      border:1px solid rgba(255,255,255,.75);
-      border-radius:var(--radius); box-shadow:var(--shadow);
-    }
-    .center-card{max-width:880px;margin:20px auto;padding:22px}
-
-    .cta{display:inline-flex;align-items:center;gap:10px;border:none;background:linear-gradient(90deg,var(--pink),var(--peach));
-      color:#fff;padding:14px 20px;border-radius:999px;font-weight:700;cursor:pointer;transition:transform .1s ease, filter .2s ease; box-shadow: 0 10px 25px rgba(255,107,158,.35)}
+    .wrap{max-width:900px;margin:0 auto;padding:28px}
+    header.hero{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;text-align:center;padding:36px 18px 18px}
+    .title{font-family:Caveat,system-ui;font-size:clamp(2.2rem,6vw,4.2rem);line-height:1.08;margin:6px 0;color:#db2672}
+    .card{background:var(--card);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.75);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .center-card{max-width:820px;margin:20px auto;padding:22px}
+    .cta{display:inline-flex;align-items:center;gap:10px;border:none;background:linear-gradient(90deg,var(--pink),var(--peach));color:#fff;padding:14px 20px;border-radius:999px;font-weight:700;cursor:pointer;transition:transform .1s ease,filter .2s ease;box-shadow:0 10px 25px rgba(255,107,158,.35)}
     .cta:hover{transform:translateY(-1px)}
     .cta:active{transform:translateY(1px)}
-    .ghost{background:#fff;color:var(--pink);border:2px solid var(--pink)}
 
-    /* Sections slider */
-    .steps{position:relative;overflow:hidden}
-    .step{display:none;padding:18px}
-    .step.active{display:block;animation:fadeUp .45s ease both}
-
-    @keyframes fadeUp{from{opacity:0; transform:translateY(8px)}to{opacity:1; transform:translateY(0)}}
-
-    /* Letter */
-    .letter{
-      font-size:1.05rem; line-height:1.8; white-space:pre-wrap; min-height:180px; position:relative;
-    }
-    .type-caret{position:absolute; width:2px; height:1.2em; background:var(--pink); display:inline-block; animation:blink 1s steps(1,end) infinite;}
+    .letter{font-size:1.06rem;line-height:1.85;white-space:pre-wrap;min-height:220px;position:relative}
+    .type-caret{position:absolute;width:2px;height:1.2em;background:var(--pink);display:inline-block;animation:blink 1s steps(1,end) infinite}
     @keyframes blink{50%{opacity:0}}
 
-    .nav{display:flex;justify-content:space-between;gap:12px;margin-top:16px}
+    footer{margin:30px 0 60px;text-align:center;opacity:.7}
 
-    /* Gallery */
-    .gallery{ display:grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-top:10px}
-    .polaroid{
-      background:#fff; padding:10px 10px 20px; border-radius:16px; box-shadow:0 15px 35px rgba(0,0,0,.12);
-      transform:rotate(var(--tilt)); transition:transform .25s ease; position:relative; overflow:hidden
-    }
-    .polaroid:hover{ transform:rotate(0) scale(1.02)}
-    .polaroid img{ width:100%; height:220px; object-fit:cover; border-radius:12px}
-    .caption{ text-align:center; margin-top:8px; font-size:.92rem; opacity:.8}
+    /* Floating hearts */
+    .float-area{pointer-events:none;position:fixed;inset:0;overflow:hidden;z-index:0}
+    .heart{position:absolute;font-size:14px;animation:floatUp linear forwards;opacity:.9}
+    @keyframes floatUp{0%{transform:translateY(110vh) scale(.9);opacity:0}10%{opacity:1}100%{transform:translateY(-10vh) scale(1.3);opacity:0}}
 
-    /* Slider */
-    .slider{position:relative; display:flex; align-items:center; justify-content:center; gap:12px; margin-top:10px}
-    .slide{display:none}
-    .slide.active{display:block;}
-    .dots{display:flex; gap:8px;justify-content:center;margin-top:10px}
-    .dot{width:10px;height:10px;border-radius:50%;background:#ffd3e1;border:2px solid #ff9fbd;cursor:pointer}
-    .dot.active{background:var(--pink)}
-    .arrow{border:none;background:#fff;border:2px solid #ffd3e1;border-radius:12px;padding:8px 10px;cursor:pointer}
+    /* Overlay Quiz Gate */
+    .gate{position:fixed;inset:0;display:grid;place-items:center;background:rgba(255,241,246,.92);backdrop-filter:blur(5px);z-index:50}
+    .gate .box{max-width:720px}
+    .gate h2{margin:0 0 8px}
+    .gate p{margin:6px 0}
+    .row{display:flex;gap:8px;margin-top:10px}
+    input[type="password"],input[type="text"]{flex:1;padding:12px 14px;border:2px solid #ffd3e1;border-radius:12px;font-size:1rem}
+    .hint{font-size:.92rem;opacity:.8;margin-top:6px}
+    .progress{display:flex;gap:6px;margin-top:12px}
+    .dot{width:10px;height:10px;border-radius:50%;background:#ffd3e1;border:2px solid #ff9fbd}
+    .dot.on{background:var(--pink)}
+    .err{color:#c6285b;font-weight:600;min-height:1.4em}
 
-    /* Hidden hearts (treasure hunt) */
-    .hunt{display:flex;align-items:center;gap:8px;flex-wrap:wrap; margin-top:8px}
-    .tag{background:#fff;border:1px solid #ffd3e1;color:#b64d6f;padding:6px 10px;border-radius:999px;font-size:.9rem}
-    .hidden-heart{position:relative;cursor:pointer;user-select:none}
-    .hidden-heart::before{content:"❤"; color:#ff5a93; opacity:.35; transition:opacity .2s}
-    .hidden-heart.found::before{opacity:1; filter:drop-shadow(0 2px 6px rgba(255,90,147,.55))}
+    /* Love notes (spammable) */
+    .love-note{position:fixed;z-index:20;max-width:260px;background:#fff;border:2px dashed #ffc2d4;border-radius:16px;box-shadow:0 8px 26px rgba(0,0,0,.15);padding:12px 14px;font-size:.98rem}
+    .love-note b{color:#db2672}
+    .pop{animation:pop .5s ease, fade 2.6s 2.1s ease forwards}
+    @keyframes pop{0%{transform:scale(.9);opacity:0}60%{transform:scale(1.05);opacity:1}100%{transform:scale(1)}}
+    @keyframes fade{to{opacity:0;transform:translateY(-10px)}}
 
-    /* Overlay for secrets */
-    .overlay{position:fixed; inset:0; display:none; place-items:center; background:rgba(255,241,246,.8); backdrop-filter: blur(4px); z-index:50}
-    .overlay.active{display:grid}
-    .secret{max-width:760px}
-
-    /* Floating hearts background */
-    .float-area{pointer-events:none; position:fixed; inset:0; overflow:hidden; z-index:0}
-    .heart{position:absolute; font-size:14px; animation:floatUp linear forwards; opacity:.9}
-    @keyframes floatUp{ 0%{ transform:translateY(110vh) scale(.9); opacity:0 } 10%{opacity:1} 100%{ transform:translateY(-10vh) scale(1.3); opacity:0}}
-
-    /* Bottom toolbar */
-    .toolbar{position:fixed; right:16px; bottom:16px; display:flex; flex-direction:column; gap:10px; z-index:5}
-    .fab{border:none; background:linear-gradient(120deg,var(--pink),var(--peach)); color:#fff; width:48px;height:48px;border-radius:12px; box-shadow:var(--shadow); cursor:pointer; font-size:20px}
-    .fab.secondary{background:#fff;color:var(--pink);border:2px solid var(--pink)}
-
-    footer{margin:40px 0 80px; text-align:center; opacity:.7}
-
-    /* Small screens tweaks */
-    @media (max-width:520px){
-      .polaroid img{height:180px}
-    }
+    .controls{display:flex;justify-content:center;margin-top:14px}
   </style>
 </head>
 <body>
-  <!--
-    💌 HOW TO CUSTOMIZE
-    1) Put your photo URLs in the IMAGES array below. You can use local paths like ./img/1.jpg or https links.
-       Tip: For best results, use vertical photos ~800x1000px.
-    2) Edit the REASONS list for the secret "4 reasons" overlay.
-    3) Personalize the heading via URL params: ?name=Sophia&m=4  (m = months)
-    4) Deploy: drag this file (and an optional /img folder) to https://app.netlify.com/drop — you'll get a shareable link.
-       Or push to a GitHub repo and enable GitHub Pages.
-  -->
-
   <div class="float-area" id="float-area" aria-hidden="true"></div>
+
+  <!-- QUIZ GATE -->
+  <div class="gate" id="gate">
+    <div class="box card" style="padding:22px">
+      <h2 class="title" style="margin-bottom:4px">Hi Sophia — one tiny quiz to enter 💌</h2>
+      <p>There are <b>three</b> little passwords that only you would know. Get them right to open your letter. (Hints included!)</p>
+
+      <div id="q1" class="q">
+        <p style="margin:10px 0 6px"><b>1) First password</b></p>
+        <div class="row"><input id="in1" type="password" placeholder="Type here…" autocomplete="off" /><button class="cta" id="btn1">Unlock 1</button></div>
+        <div class="hint">Hint: <i>im+(my middle name)+inlovewithyou</i></div>
+      </div>
+
+      <div id="q2" class="q" style="display:none">
+        <p style="margin:14px 0 6px"><b>2) Second password</b></p>
+        <div class="row"><input id="in2" type="password" placeholder="Type here…" autocomplete="off" /><button class="cta" id="btn2">Unlock 2</button></div>
+        <div class="hint">Hint: <i>(what bug is on your wrist)</i></div>
+      </div>
+
+      <div id="q3" class="q" style="display:none">
+        <p style="margin:14px 0 6px"><b>3) Third password</b></p>
+        <div class="row"><input id="in3" type="password" placeholder="Type here…" autocomplete="off" /><button class="cta" id="btn3">Enter 💖</button></div>
+        <div class="hint">Hint: <i>(name of your bear)</i></div>
+      </div>
+
+      <div class="err" id="err"></div>
+      <div class="progress"><span class="dot on" id="d1"></span><span class="dot" id="d2"></span><span class="dot" id="d3"></span></div>
+    </div>
+  </div>
 
   <div class="wrap">
     <header class="hero">
-      <div class="badge"><span class="hidden-heart" id="h1" aria-label="hidden heart" title="(psst) click me"></span> Tiny Love Site · made for you <span class="hidden-heart" id="h2"></span></div>
-      <h1 class="title" id="main-title" title="Click me 4 times for a secret">Happy 4 Months, my love! 💖</h1>
-      <p class="subtitle">A little interactive letter you can tap, explore, and smile through.</p>
-
-      <div class="center-card card steps" id="steps">
-        <!-- Step 1: cover -->
-        <section class="step active" id="step-1" aria-label="Cover">
-          <div style="padding:10px 10px 4px; text-align:center">
-            <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=1600&auto=format&fit=crop" width="960" height="540" alt="soft pink hearts" style="width:100%;height:auto;border-radius:16px;box-shadow:0 12px 28px rgba(0,0,0,.12)">
-          </div>
-          <p style="text-align:center;margin:14px 6px 4px">Press the envelope to open your letter ✉️</p>
-          <div class="nav" style="justify-content:center">
-            <button class="cta" id="open-letter">💌 Open Letter</button>
-            <button class="cta ghost" id="toggle-hearts" title="Release floating hearts">❤ Hearts</button>
-          </div>
-        </section>
-
-        <!-- Step 2: letter -->
-        <section class="step" id="step-2" aria-label="Letter">
-          <div class="letter" id="letter"></div>
-          <div class="nav">
-            <button class="cta ghost" data-go="1">← Back</button>
-            <div style="display:flex; gap:10px; align-items:center">
-              <span class="tag">psst: try the ❤ buttons & the hearts in the header</span>
-              <button class="cta" data-go="3">Next → Moments</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Step 3: moments + slider -->
-        <section class="step" id="step-3" aria-label="Moments">
-          <h3 style="margin:6px 6px 8px">Our Little Moments</h3>
-          <div class="slider card" style="padding:12px" id="slider">
-            <button class="arrow" id="prev">⟵</button>
-            <img id="slide-img" class="slide active" alt="Our moment" style="border-radius:12px; width:100%; max-height:420px; object-fit:cover">
-            <button class="arrow" id="next">⟶</button>
-          </div>
-          <div class="dots" id="dots" role="tablist" aria-label="slide dots"></div>
-
-          <div class="hunt">
-            <span class="tag">Treasure Hunt: Find 3 hidden hearts <span id="found-count">0</span>/3</span>
-            <span class="hidden-heart" id="h3" title="(psst) I'm one"></span>
-          </div>
-
-          <div class="nav" style="margin-top:16px">
-            <button class="cta ghost" data-go="2">← Back</button>
-            <button class="cta" data-go="4">Photo Wall →</button>
-          </div>
-        </section>
-
-        <!-- Step 4: photo wall -->
-        <section class="step" id="step-4" aria-label="Photo Wall">
-          <h3 style="margin:6px 6px 8px">Photo Wall</h3>
-          <p class="subtitle" style="margin:0 6px 8px">Tap any photo to pop it out ✨</p>
-          <div class="gallery" id="gallery"></div>
-          <div class="nav">
-            <button class="cta ghost" data-go="3">← Back</button>
-            <button class="cta" id="finish">Finish 🎉</button>
-          </div>
-        </section>
+      <h1 class="title" id="main-title">Happy 4 Months, Sophia! 💖</h1>
+      <div class="center-card card" id="letter-card">
+        <div class="letter" id="letter"></div>
+        <div class="controls"><button class="cta" id="love-btn">Things I love about you</button></div>
       </div>
     </header>
 
     <footer>
-      Made with 💗 by <span id="byline">your person</span>. Press ↑ ↑ ↓ ↓ ← → ← → B A for a surprise.
+      From Justin · Anniversary: September 9, 2025 · psst: press this month's anniversary numbers (0 9 0 9 2 5) for a surprise.
     </footer>
   </div>
 
-  <!-- Secret overlays -->
-  <div class="overlay" id="reasons-overlay" role="dialog" aria-modal="true">
-    <div class="secret card" style="padding:22px">
-      <h2 style="margin:4px 0 10px">4 Reasons I adore you</h2>
-      <ol id="reasons" style="line-height:1.9; margin:0 0 10px 18px"></ol>
-      <div style="display:flex;justify-content:flex-end"><button class="cta ghost" id="close-reasons">Close</button></div>
-    </div>
-  </div>
-
-  <div class="overlay" id="treasure-overlay" role="dialog" aria-modal="true">
-    <div class="secret card" style="padding:22px; text-align:center">
-      <h2 style="margin:0 0 6px">You found all the hearts! 🗝️</h2>
-      <p style="margin-top:0">Here’s a secret: I love you more every single day. Thanks for making these <span id="months-mini">4</span> months so special. 💞</p>
-      <div style="display:flex;justify-content:center"><button class="cta" id="close-treasure">Aww, thanks 💗</button></div>
-    </div>
-  </div>
-
-  <!-- Toolbar (customize / copy link) -->
-  <div class="toolbar" aria-hidden="false">
-    <button class="fab" id="fab-custom" title="Customize name & months">⚙️</button>
-    <button class="fab secondary" id="fab-copy" title="Copy current link">🔗</button>
-  </div>
-
   <script>
-    // ====== CONFIG ======
-    // Replace with YOUR photos (local paths or https URLs). Vertical looks extra cute.
-    const IMAGES = [
-      // TODO: replace these with your girlfriend's photos (keep quotes). Examples:
-      // "./img/beach-day.jpg",
-      // "https://i.imgur.com/yourPhoto1.jpg",
-      "https://picsum.photos/seed/rose/900/1200",
-      "https://picsum.photos/seed/sunshine/900/1200",
-      "https://picsum.photos/seed/giggles/900/1200",
-      "https://picsum.photos/seed/coffee/900/1200",
-      "https://picsum.photos/seed/latewalks/900/1200",
-      "https://picsum.photos/seed/polaroid/900/1200",
-    ];
+    // Personalization
+    const NAME = 'Sophia';
+    const FROM = 'Justin';
+    const MONTHS = 4;
+    const DATE_STR = 'September 9, 2025';
 
-    const REASONS = [
-      "Your laugh is my favorite sound.",
-      "You turn ordinary moments into little adventures.",
-      "Your kindness inspires me to be better.",
-      "Being with you feels like home."
-    ];
+    // Letter text
+    const letterText = `Hi ${NAME},
 
-    // ====== URL Params (name & months) ======
-    const params = new URLSearchParams(location.search);
-    const NAME = (params.get('name') || 'my love').trim();
-    const MONTHS = Math.max(1, parseInt(params.get('m') || '4', 10) || 4);
+Happy ${MONTHS} months! On ${DATE_STR}, I just want to say how grateful I am for you — your warmth, your strength, and the way you turn ordinary days into tiny miracles.
 
-    // Apply dynamic bits
-    const title = document.getElementById('main-title');
-    const monthsMini = document.getElementById('months-mini');
-    title.textContent = `Happy ${MONTHS} Months, ${NAME}! 💖`;
-    monthsMini.textContent = MONTHS;
-    document.title = `Happy ${MONTHS} Months, ${NAME}! 💖`;
-    document.getElementById('byline').textContent = (params.get('from') || 'Justin');
+Thank you for your care, your honesty, and the way you always meet me where I am. I love your mind, your heart, and how we’ve built our own little world together.
 
-    // ====== Typewriter Letter ======
-    const letterEl = document.getElementById('letter');
-    const letterText = `Hi ${NAME},\n\nHappy ${MONTHS} months! I’m so grateful for you — for your smile, your warmth, and all the tiny moments that feel big because they’re with you.\n\nThank you for the laughs, the late-night talks, and the way you make even ordinary days sparkle. I love how you care, how you dream, and how we’re slowly building our own little universe.\n\nHere’s to us: to more walks, more photos, and more memories I’ll replay forever.\n\nAlways,\nYour person ♡`;
+Here’s to us — to the inside jokes, the future plans, and all the moments I’ll keep replaying.
+
+Always,
+${FROM} ♡`;
 
     function typewriter(el, text, speed=22){
       el.textContent = '';
@@ -273,7 +139,8 @@
         if(i < text.length){
           const ch = text[i++];
           caret.insertAdjacentText('beforebegin', ch);
-          setTimeout(tick, ch==='\n'? 120 : speed);
+          setTimeout(tick, ch==='
+'? 120 : speed);
         } else {
           caret.remove();
         }
@@ -281,148 +148,168 @@
       tick();
     }
 
-    // ====== Steps Nav ======
-    const steps = [...document.querySelectorAll('.step')];
-    function go(n){ steps.forEach((s,i)=> s.classList.toggle('active', i===n-1)); }
-    document.querySelectorAll('[data-go]').forEach(btn=> btn.addEventListener('click', e=> go(parseInt(btn.dataset.go,10))));
-    document.getElementById('open-letter').addEventListener('click', ()=>{ go(2); typewriter(letterEl, letterText); burstHearts(24); });
+    // Show letter once gate completes
+    function showLetter(){ typewriter(document.getElementById('letter'), letterText); }
 
-    // ====== Slider ======
-    const slideImg = document.getElementById('slide-img');
-    const dotsBox = document.getElementById('dots');
-    let idx = 0;
-    function renderSlide(){ slideImg.src = IMAGES[idx]; updateDots(); }
-    function prev(){ idx = (idx - 1 + IMAGES.length) % IMAGES.length; renderSlide(); }
-    function next(){ idx = (idx + 1) % IMAGES.length; renderSlide(); }
-    function updateDots(){
-      dotsBox.innerHTML = '';
-      IMAGES.forEach((_,i)=>{
-        const d = document.createElement('button');
-        d.className = 'dot' + (i===idx?' active':'');
-        d.setAttribute('aria-label', `show slide ${i+1}`);
-        d.addEventListener('click', ()=>{ idx=i; renderSlide(); });
-        dotsBox.appendChild(d);
-      });
-    }
-    document.getElementById('prev').addEventListener('click', prev);
-    document.getElementById('next').addEventListener('click', next);
-    renderSlide();
-
-    // ====== Photo Wall ======
-    const gal = document.getElementById('gallery');
-    function randTilt(){ return (Math.random() * 10 - 5).toFixed(1) + 'deg'; }
-    function renderGallery(){
-      gal.innerHTML = '';
-      IMAGES.forEach((src, i)=>{
-        const card = document.createElement('figure');
-        card.className = 'polaroid';
-        card.style.setProperty('--tilt', randTilt());
-        const img = document.createElement('img'); img.loading='lazy'; img.src = src; img.alt = `memory ${i+1}`;
-        const cap = document.createElement('figcaption'); cap.className='caption'; cap.textContent = 'click to pop';
-        card.append(img, cap);
-        card.addEventListener('click', ()=>{
-          card.style.transform = 'rotate(0) scale(1.06)';
-          setTimeout(()=> card.style.transform = 'rotate(var(--tilt)) scale(1)', 900);
-          burstHearts(12);
-        });
-        gal.appendChild(card);
-      });
-    }
-    renderGallery();
-
-    // ====== Hidden Hearts Hunt ======
-    const hiddenHearts = ['h1','h2','h3'].map(id=> document.getElementById(id));
-    let found = 0;
-    hiddenHearts.forEach(h => h.addEventListener('click', ()=>{
-      if(!h.classList.contains('found')){
-        h.classList.add('found');
-        found++; document.getElementById('found-count').textContent = found;
-        burstHearts(16);
-        if(found===hiddenHearts.length){
-          document.getElementById('treasure-overlay').classList.add('active');
-          setTimeout(()=> burstHearts(42), 250);
-        }
-      }
-    }));
-    document.getElementById('close-treasure').addEventListener('click', ()=>{
-      document.getElementById('treasure-overlay').classList.remove('active');
-    });
-
-    // ====== 4‑click secret (reasons) ======
-    const reasonsList = document.getElementById('reasons');
-    REASONS.forEach(r=>{
-      const li = document.createElement('li'); li.textContent=r; reasonsList.appendChild(li);
-    });
-    let clickCount=0; title.addEventListener('click', ()=>{
-      clickCount++; if(clickCount>=4){
-        document.getElementById('reasons-overlay').classList.add('active');
-        clickCount=0; burstHearts(28);
-      }
-    });
-    document.getElementById('close-reasons').addEventListener('click', ()=>{
-      document.getElementById('reasons-overlay').classList.remove('active');
-    });
-
-    // ====== Floating hearts ======
+    // Floating hearts
     const floatArea = document.getElementById('float-area');
-    let heartTimer = null;
     function spawnHeart(){
       const h = document.createElement('div');
       h.className = 'heart';
       h.textContent = '❤';
-      const size = 12 + Math.random()*24; // 12..36
+      const size = 12 + Math.random()*24;
       h.style.left = Math.random()*100 + 'vw';
       h.style.fontSize = size + 'px';
       h.style.animationDuration = (6 + Math.random()*6) + 's';
       floatArea.appendChild(h);
       setTimeout(()=> h.remove(), 12000);
     }
-    function toggleHearts(){
-      if(heartTimer){ clearInterval(heartTimer); heartTimer=null; return; }
-      for(let i=0;i<16;i++) spawnHeart();
-      heartTimer = setInterval(spawnHeart, 500);
-    }
-    document.getElementById('toggle-hearts').addEventListener('click', toggleHearts);
+    function burstHearts(n=40){ for(let i=0;i<n;i++) setTimeout(spawnHeart, i*35); }
 
-    function burstHearts(n=20){
-      for(let i=0;i<n;i++) setTimeout(spawnHeart, i*35);
-    }
-
-    // ====== Konami code ======
-    const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-    let buffer = [];
+    // Surprise code: press digits 0 9 0 9 2 5
+    const TARGET = '090925';
+    let buf = '';
     addEventListener('keydown', (e)=>{
-      buffer.push(e.key);
-      if(buffer.length>KONAMI.length) buffer.shift();
-      if(KONAMI.every((k,i)=> buffer[i]?.toLowerCase()===k.toLowerCase())){
-        burstHearts(80);
-        buffer = [];
+      if(!/^[0-9]$/.test(e.key)) return;
+      buf += e.key;
+      if(!TARGET.startsWith(buf)) buf = (e.key === TARGET[0] ? e.key : '');
+      if(buf === TARGET){ burstHearts(90); buf=''; }
+    });
+
+    // Love Reasons: spammable sticky notes
+    const REASONS = [
+`Your gorgeous eyes`,
+`Your smile (i could stare at your smile for hours)`,
+`Your voice`,
+`Your passion`,
+`Your empathy`,
+`How you’re always there for me when I’m down`,
+`Your maturity`,
+`Your intelligence`,
+`How you talk me through every emotion I have`,
+`How you understand me so well`,
+`How you always know the answer to how I feel`,
+`Whenever I see 10+ notifications from you on tiktok`,
+`How well you understand yourself`,
+`Your eyelids`,
+`Your growth`,
+`Your passion for things you love. (and hate...)`,
+`Your taste in music`,
+`THAT LADYBUG HAIRCLIP OF YOURS`,
+`That amaaaazing bracelet you have on`,
+`Your crazy cats & soup progress...`,
+`Your passion in mental health`,
+`Your love for helping others`,
+`Your selflessness`,
+`Your love for thrifting`,
+`Your love for cheesecake (i love cheescake....)`,
+`The way you try`,
+`The way you take time to reflect`,
+`Your mind`,
+`Your qdoba quesadilla (i need to try it so badly)`,
+`Your writing`,
+`The way your room is so thoughtfully decorated`,
+`Your communication`,
+`Idk if this counts but I love your dogs so much........`,
+`Your bizzare ability to build legos so fast...`,
+`The way you can take my dumb jokes`,
+`Your laugh`,
+`Your “rah rah rah”s`,
+`That’s great vaughn….`,
+`Your playlists ESPECIALLY ❤️`,
+`Your kindness to strangers (trust me it never goes unnoticed)`,
+`Your hugs that feel like home (even the virtual ones)`,
+`Your courage to say the hard, honest thing (thank you for asking me out…)`,
+`Your patience with me`,
+`Your ability to bring everybody around you up`,
+`Your belief in me`,
+`THE SELFIES YOU TAKE WITH YOUR TONGUE STUCK OUT`,
+`The dreaded “pills” alarm...`,
+`That litlte super random baking competition trophy you have`,
+`Your messages on couple joy`,
+`The way you wait to talk to me before sleeping`,
+`The way you’d give up sleep for me (i would too love i love you so much)`,
+`Your compassion for your dogs`,
+`Your love for your movies and shows`,
+`Your honesty with me when I need advice`,
+`Your gentleness with yourself (You’ve grown so much)`,
+`Your accountability (you show up. always.)`,
+`The handshake we made when you visited me at Vandy`,
+`Your ability to always find the underground things`,
+`Your “I saw this and thought of you” moments`,
+`Your smell`,
+`Your We’re not really strangers game you carry around everywhere`,
+`Your willingness to apologize and repair things`,
+`The way you feel for others`,
+`Your gift giving`,
+`Your willingness to learn and unlearn things`,
+`Your voice memos (my prized posessions)`,
+`How you love and also hate holding hands`,
+`Your laughs at my worst jokes`,
+`Your commitment to growth over perfection`,
+`Your way of making ordinary days feel special`,
+`Your faith in us`,
+`Your kindness to the service workers out there (always leave a tip guys)`,
+`Your memory for the small things`
+    ];
+
+    function rand(min,max){ return Math.random()*(max-min)+min; }
+    function spawnNote(){
+      const note = document.createElement('div');
+      note.className = 'love-note pop';
+      note.innerHTML = `<b>Reason:</b> ${REASONS[Math.floor(Math.random()*REASONS.length)]}`;
+      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+      const x = rand(20, vw-300); const y = rand(80, vh-220);
+      note.style.left = x+"px"; note.style.top = y+"px";
+      document.body.appendChild(note);
+      setTimeout(()=> note.remove(), 3600);
+      burstHearts(8);
+    }
+    document.getElementById('love-btn').addEventListener('click', spawnNote);
+
+    // ===== Quiz logic =====
+    const PASS1 = 'imjoeinlovewithyou';
+    const PASS2 = 'ladybug';
+    const PASS3 = 'bobert';
+    const err = document.getElementById('err');
+    const d1 = document.getElementById('d1');
+    const d2 = document.getElementById('d2');
+    const d3 = document.getElementById('d3');
+
+    function check(id, expected, nextId, dot){
+      const inp = document.getElementById(id);
+      const val = (inp.value||'').trim().toLowerCase();
+      if(val === expected){
+        err.textContent = '';
+        if(dot===1) d2.classList.add('on');
+        if(dot===2) d3.classList.add('on');
+        if(nextId){
+          document.getElementById('q1').style.display = 'none';
+          document.getElementById('q2').style.display = (nextId==='q2')?'block':'none';
+          document.getElementById('q3').style.display = (nextId==='q3')?'block':'none';
+          document.getElementById(nextId.replace('q','in')).focus();
+        } else {
+          document.getElementById('gate').style.display = 'none';
+          showLetter();
+          burstHearts(36);
+        }
+      } else {
+        err.textContent = 'Close, but not quite. Try the hint!';
+        inp.style.borderColor = '#ff6b9e';
+        setTimeout(()=> inp.style.borderColor = '#ffd3e1', 600);
       }
-    });
+    }
 
-    // ====== Toolbar: customize & copy link ======
-    document.getElementById('fab-custom').addEventListener('click', ()=>{
-      const newName = prompt('Her name for the banner:', NAME) || NAME;
-      const newMonths = parseInt(prompt('How many months?', MONTHS) || MONTHS, 10) || MONTHS;
-      const url = new URL(location.href);
-      url.searchParams.set('name', newName);
-      url.searchParams.set('m', newMonths);
-      history.replaceState(null, '', url.toString());
-      title.textContent = `Happy ${newMonths} Months, ${newName}! 💖`;
-      monthsMini.textContent = newMonths;
-      document.title = `Happy ${newMonths} Months, ${newName}! 💖`;
-    });
+    document.getElementById('btn1').addEventListener('click', ()=> check('in1', PASS1, 'q2', 1));
+    document.getElementById('btn2').addEventListener('click', ()=> check('in2', PASS2, 'q3', 2));
+    document.getElementById('btn3').addEventListener('click', ()=> check('in3', PASS3, null, 3));
+    document.getElementById('in1').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('btn1').click(); });
+    document.getElementById('in2').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('btn2').click(); });
+    document.getElementById('in3').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('btn3').click(); });
 
-    document.getElementById('fab-copy').addEventListener('click', async ()=>{
-      try{ await navigator.clipboard.writeText(location.href); alert('Link copied! Send it to her 💘'); }
-      catch{ prompt('Copy this link:', location.href); }
-    });
-
-    // Finish button flair
-    document.getElementById('finish').addEventListener('click', ()=>{
-      burstHearts(64);
-      alert('I love you. Today, tomorrow, always. 💕');
-    });
+    // Autofocus first input on load
+    window.addEventListener('load', ()=> document.getElementById('in1').focus());
   </script>
 </body>
 </html>
