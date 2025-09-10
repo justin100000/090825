@@ -52,7 +52,7 @@
     .dot.on{background:var(--pink)}
     .err{color:#c6285b;font-weight:600;min-height:1.4em}
 
-    /* Love notes (spammable) */
+    /* notes (spammable) */
     .love-note{position:fixed;z-index:20;max-width:280px;background:linear-gradient(180deg,#fff6fb,#ffffff);border:2px dashed #ffc2d4;border-radius:16px;box-shadow:0 8px 26px rgba(0,0,0,.15);padding:14px 16px;font-size:1.15rem;font-family:Caveat,system-ui;letter-spacing:.2px}
     .pop{animation:pop .5s ease, fade 2.6s 2.1s ease forwards}
     @keyframes pop{0%{transform:scale(.9);opacity:0}60%{transform:scale(1.05);opacity:1}100%{transform:scale(1)}}
@@ -74,7 +74,7 @@
     .photo-frame img{max-width:100%;max-height:78vh;border-radius:12px;display:block}
     .photo-hint{font:600 .9rem Poppins,system-ui;color:#8a8891;text-align:center;margin-top:8px}
 
-    /* Polaroid styling */
+    /* Polaroid */
     .polaroid{background:#fff;border-radius:12px;padding:12px 12px 22px;box-shadow:0 25px 60px rgba(0,0,0,.35);transform:rotate(var(--tilt));}
     .polaroid-img{max-width:min(86vw,820px);max-height:68vh;border-radius:8px;display:block}
     .polaroid-cap{font:700 clamp(1.05rem,2.2vw,1.7rem) Caveat,system-ui;color:#444;text-align:center;margin-top:8px;letter-spacing:.3px}
@@ -130,13 +130,13 @@
   </div>
 
   <script>
-    // ===== Personalization & Letter =====
+    // ===== Letter =====
     const NAME = 'Sophia';
     const FROM = 'Justin';
     const MONTHS = 4;
     const DATE_STR = 'September 9, 2025';
 
-    // Dynamic photo list loader (supports mixed names and JPG/JPEG)
+    // Dynamic photo list loader
     let IMGS = [];
     async function ensurePhotoList(){
       if (IMGS?.length) return IMGS;
@@ -207,7 +207,7 @@ Justin🌟`;
     }
     function burstHearts(n=40){ for(let i=0;i<n;i++) setTimeout(spawnHeart, i*35); }
 
-    // ===== Secret code: press digits 0 9 0 9 2 5 (e.g., today's date) =====
+    // ===== Secret code =====
     const TARGET = '090925';
     let buf = '';
     addEventListener('keydown', (e)=>{
@@ -298,7 +298,7 @@ Justin🌟`;
     function spawnNote(){
       const note = document.createElement('div');
       note.className = 'love-note pop';
-      // pastel rotate + random border color
+      // rotate + random border color
       const bgs = ['linear-gradient(180deg,#fff6fb,#ffffff)','linear-gradient(180deg,#fffbe6,#ffffff)','linear-gradient(180deg,#eaf7ff,#ffffff)'];
       const borders = ['#ffc2d4','#ffd3a8','#bde0ff'];
       note.style.background = bgs[Math.floor(Math.random()*bgs.length)];
