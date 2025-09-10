@@ -81,6 +81,13 @@
 
     /* Cursor trail hearts */
     .trail-heart{position:fixed;left:0;top:0;pointer-events:none;z-index:65;will-change:transform,opacity;filter:drop-shadow(0 4px 10px rgba(0,0,0,.15))}
+
+    /* ===== Anniversary celebration overlay ===== */
+    .celebrate-overlay{position:fixed;inset:0;display:grid;place-items:center;background:radial-gradient(1200px 800px at 50% -10%, rgba(255,209,220,.85), rgba(0,0,0,.55));backdrop-filter:blur(2px);z-index:120}
+    .celebrate-card{padding:28px 34px;border-radius:24px;background:#fff;box-shadow:0 30px 90px rgba(0,0,0,.35);text-align:center;animation:popIn .35s cubic-bezier(.2,.8,.2,1)}
+    .celebrate-title{font-family:Caveat,system-ui;font-size:clamp(2.6rem,7vw,5rem);color:#db2672;margin:0 0 6px}
+    .celebrate-sub{font:700 1rem Poppins,system-ui;color:#8a8891;margin:0 0 10px}
+    .celebrate-hint{font:600 .9rem Poppins,system-ui;color:#8a8891;margin-top:10px}
   </style>
 </head>
 <body>
@@ -450,7 +457,80 @@ Justin🌟`;
       document.getElementById('in1').focus();
       showQ(q1);
       d1.classList.add('on');
+      scheduleDailyCelebration(); // <— start the 10:38pm local-time celebration
     });
+
+    // ===== 10:38pm Local-Time Celebration =====
+    const CELEBRATION_HOUR = 22;   // 24h clock — 22 = 10pm
+    const CELEBRATION_MIN  = 38;   // 38 minutes past the hour
+
+    function celebrate(){
+      try { localStorage.setItem('lastCelebration', new Date().toDateString()); } catch(_) {}
+
+      const overlay = document.createElement('div');
+      overlay.className = 'celebrate-overlay';
+
+      const card = document.createElement('div');
+      card.className = 'celebrate-card';
+
+      const h1 = document.createElement('h1');
+      h1.className = 'celebrate-title';
+      h1.textContent = 'Happy Anniversary! 🎉';
+
+      const sub = document.createElement('div');
+      sub.className = 'celebrate-sub';
+      const now = new Date();
+      sub.textContent = now.toLocaleDateString(undefined, { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+      const hint = document.createElement('div');
+      hint.className = 'celebrate-hint';
+      hint.textContent = 'click anywhere or press Esc to close';
+
+      card.appendChild(h1);
+      card.appendChild(sub);
+      card.appendChild(hint);
+      overlay.appendChild(card);
+      document.body.appendChild(overlay);
+
+      // Party effects 🎈
+      burstHearts(80);
+      for (let i=0;i<8;i++) setTimeout(spawnNote, 250*i);
+
+      function close(){ overlay.remove(); }
+      overlay.addEventListener('click', close);
+      const onEsc = (e)=>{ if(e.key==='Escape'){ close(); removeEventListener('keydown', onEsc); } };
+      addEventListener('keydown', onEsc);
+    }
+
+    function msUntilNext(hour, minute){
+      const now = new Date();
+      const target = new Date(now);
+      target.setHours(hour, minute, 0, 0);
+      if (target <= now) target.setDate(target.getDate()+1);
+      return target.getTime() - now.getTime();
+    }
+
+    function scheduleDailyCelebration(){
+      // Avoid double-firing if user reloads exactly at time; show only once per day per device
+      try {
+        const last = localStorage.getItem('lastCelebration');
+        const today = new Date().toDateString();
+        if (last === today) {
+          // already celebrated today; schedule for tomorrow
+          setTimeout(()=>{ celebrate(); scheduleDailyCelebration(); }, msUntilNext(CELEBRATION_HOUR, CELEBRATION_MIN));
+          return;
+        }
+      } catch(_) {}
+
+      const delay = msUntilNext(CELEBRATION_HOUR, CELEBRATION_MIN);
+      setTimeout(()=>{
+        celebrate();
+        scheduleDailyCelebration(); // schedule the next one (24h from now via msUntilNext)
+      }, delay);
+    }
+
+    // For quick manual testing in console:
+    window.forceCelebrate = celebrate;
   </script>
 </body>
 </html>
